@@ -22,12 +22,8 @@ def exit():
 # definice tlačítka odeslat
 def odeslat():
     top = tk.Toplevel()
-    c = cislo.get()
-    z = zprava.get()
-    h = int(hodina.get())
-    m = int(minuta.get())
-    Label(top, text=pywhatkit.sendwhatmsg(c, z, h, m))
-    
+    Label(top, text="Probíhá odpočet do odeslání zprávy.\nProsím nezavírejte toto okno.").grid(row=0, column=0)
+    pywhatkit.sendwhatmsg(cislo.get(), zprava.get(), int(hodina.get()), int(minuta.get())).grid(row=1, column=0)
     #pywhatkit.sendwhatmsg("+420775775488", "Test", 13, 5)
 
 # tel číslo
@@ -52,7 +48,6 @@ Label(okno, text="Minuta:").grid(row=6, column=0)
 minuta = Entry(okno)
 minuta.insert(10,"00")
 minuta.grid(row=6, column=1)
-
 
 # tlacitko odeslat
 tlacirko_odeslat = tk.Button(okno, text="Odeslat", command=odeslat).grid(row=7, column=0)
